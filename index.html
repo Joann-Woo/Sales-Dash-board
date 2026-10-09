@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Outlet performance</title>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>Outlet performance</h1>
+      <p class="sub" id="period">Weekly sales against target</p>
+      <p class="source" id="source"><span class="ver">v3</span> · <span id="source-text">Loading…</span> <button type="button" class="link" id="reload">Refresh</button></p>
+    </div>
+    <div class="filter" id="filter" role="group" aria-label="Filter by outlet"></div>
+  </header>
+
+  <div class="banner" id="load-error" role="alert" hidden>
+    <div><strong>Couldn't load data from Supabase.</strong> <span id="load-error-msg"></span></div>
+    <button type="button" id="retry">Try again</button>
+  </div>
+
+  <section class="kpis">
+    <div class="card kpi"><div class="label">Total sales</div><div class="value" id="kpi-sales">–</div><div class="note" id="kpi-sales-note"></div></div>
+    <div class="card kpi accent"><div class="label">% of target</div><div class="value" id="kpi-target">–</div><div class="note" id="kpi-target-note"></div></div>
+    <div class="card kpi"><div class="label">Orders</div><div class="value" id="kpi-orders">–</div><div class="note" id="kpi-orders-note"></div></div>
+    <div class="card kpi"><div class="label">Returns %</div><div class="value" id="kpi-returns">–</div><div class="note" id="kpi-returns-note"></div></div>
+  </section>
+
+  <section class="grid">
+    <div class="card">
+      <h2>Sales as % of target</h2>
+      <p class="hint">One bar per outlet-week. Red bars are below 90%.</p>
+      <div id="bars"></div>
+      <div class="legend">
+        <span><i style="background:var(--bar)"></i>On track (90%+)</span>
+        <span><i style="background:var(--red)"></i>Below 90%</span>
+        <span><i style="background:var(--accent);width:2px"></i>100% target</span>
+      </div>
+    </div>
+    <div class="card">
+      <h2>Needs attention</h2>
+      <p class="hint">Outlet-weeks under 90% of target.</p>
+      <ul class="attn" id="attention"></ul>
+    </div>
+  </section>
+</div>
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>
